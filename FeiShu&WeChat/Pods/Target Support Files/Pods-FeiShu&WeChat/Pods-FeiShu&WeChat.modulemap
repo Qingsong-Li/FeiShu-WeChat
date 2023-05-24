@@ -1,0 +1,6 @@
+framework module Pods_FeiShu_WeChat {
+  umbrella header "Pods-FeiShu&WeChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
