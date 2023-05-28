@@ -18,7 +18,7 @@
     return self;
 }
 
-#pragma mark - Masonry
+
 
 
 
@@ -72,6 +72,7 @@
     if(_accountField == nil){
         _accountField = [self getField];
         _accountField.placeholder = @"请输入账号";
+        _accountField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     }
     return _accountField;
 }
@@ -80,6 +81,8 @@
     if(_passWordField == nil){
         _passWordField = [self getField];
         _passWordField.placeholder = @"请输入密码";
+        _passWordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+
     }
     return _passWordField;
 }
@@ -110,6 +113,7 @@
     return _logBtn;
 }
 
+
 - (void)addAllSubview {
     [self addSubview:self.titleLab];
     [self addSubview:self.accountLab];
@@ -120,6 +124,8 @@
     [self addSubview:self.partingLine2];
     [self addSubview:self.logBtn];
 }
+
+#pragma mark - Masonry
 //用于设置所有控件的Masonry约束
 - (void)setMasonry {
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {

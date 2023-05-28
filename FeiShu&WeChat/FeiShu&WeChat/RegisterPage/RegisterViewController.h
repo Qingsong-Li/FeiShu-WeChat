@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RegisterViewController : UIViewController
 
-//@property(nonatomic,strong)RegisterView *regView;
+@property(nonatomic,strong)RegisterView *regView;
 
 @end
 

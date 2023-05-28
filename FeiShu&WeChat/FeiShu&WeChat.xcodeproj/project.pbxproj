@@ -15,6 +15,8 @@
 		ABA763952A1D9A7200B17333 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763942A1D9A7200B17333 /* main.m */; };
 		ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7639D2A1D9E1600B17333 /* RegisterView.m */; };
 		ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763A02A1D9EAA00B17333 /* RegisterViewController.m */; };
+		ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763F22A1F8EA700B17333 /* KeyChainManager.m */; };
+		ABA7641C2A232DC500B17333 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7641B2A232DC500B17333 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,11 @@
 		ABA7639D2A1D9E1600B17333 /* RegisterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
 		ABA7639F2A1D9EAA00B17333 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		ABA763A02A1D9EAA00B17333 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeiShu&WeChat.entitlements"; sourceTree = "<group>"; };
+		ABA763F12A1F8EA700B17333 /* KeyChainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyChainManager.h; sourceTree = "<group>"; };
+		ABA763F22A1F8EA700B17333 /* KeyChainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyChainManager.m; sourceTree = "<group>"; };
+		ABA7641A2A232DC500B17333 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		ABA7641B2A232DC500B17333 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +69,6 @@
 				9F2466C149BCB63F306DCAE5 /* Pods-FeiShu&WeChat.debug.xcconfig */,
 				EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,6 +93,8 @@
 		ABA763812A1D9A7000B17333 /* FeiShu&WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */,
+				ABA764192A232D9700B17333 /* MainPage */,
 				ABA7639B2A1D9DBF00B17333 /* RegisterPage */,
 				ABA763822A1D9A7000B17333 /* AppDelegate.h */,
 				ABA763832A1D9A7000B17333 /* AppDelegate.m */,
@@ -96,6 +104,8 @@
 				ABA763902A1D9A7200B17333 /* LaunchScreen.storyboard */,
 				ABA763932A1D9A7200B17333 /* Info.plist */,
 				ABA763942A1D9A7200B17333 /* main.m */,
+				ABA763F12A1F8EA700B17333 /* KeyChainManager.h */,
+				ABA763F22A1F8EA700B17333 /* KeyChainManager.m */,
 			);
 			path = "FeiShu&WeChat";
 			sourceTree = "<group>";
@@ -109,6 +119,15 @@
 				ABA763A02A1D9EAA00B17333 /* RegisterViewController.m */,
 			);
 			path = RegisterPage;
+			sourceTree = "<group>";
+		};
+		ABA764192A232D9700B17333 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				ABA7641A2A232DC500B17333 /* MainViewController.h */,
+				ABA7641B2A232DC500B17333 /* MainViewController.m */,
+			);
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +246,8 @@
 				ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */,
 				ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */,
 				ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */,
+				ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */,
+				ABA7641C2A232DC500B17333 /* MainViewController.m in Sources */,
 				ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */,
 				ABA763952A1D9A7200B17333 /* main.m in Sources */,
 			);
@@ -362,6 +383,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeiShu&WeChat/FeiShu&WeChat.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YGUX3LZ5M9;
@@ -390,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeiShu&WeChat/FeiShu&WeChat.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YGUX3LZ5M9;
