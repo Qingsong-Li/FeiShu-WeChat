@@ -15,7 +15,6 @@
     if(self){
         self.backgroundColor = [UIColor systemGray6Color];
         [self addSubview:self.title];
-        [self addSubview:self.addBtn];
         [self setMasonry];
     }
     return self;
@@ -26,7 +25,7 @@
         make.centerX.mas_equalTo(self).mas_offset(0);
         make.bottom.mas_equalTo(self).mas_offset(-10);
         make.height.mas_offset(20);
-        make.width.mas_offset(80);
+        make.width.mas_offset(130);
     }];
 }
 

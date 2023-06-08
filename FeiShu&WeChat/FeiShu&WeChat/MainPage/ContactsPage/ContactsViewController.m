@@ -6,6 +6,7 @@
 //
 
 #import "ContactsViewController.h"
+#import "AddContactsViewController.h"
 #import "TopView.h"
 #import "Masonry.h"
 
@@ -13,6 +14,7 @@
 
 @property(nonatomic,strong) TopView *topView;
 @property(nonatomic,strong) UITableView *table;
+@property(nonatomic,strong) UIButton *addContactsBtn;
 
 @end
 
@@ -32,23 +34,25 @@
 }
 
 - (void)setMasonry{
-    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view).mas_offset(0);
-        make.top.mas_offset(0);
-        make.width.mas_equalTo(self.view).mas_offset(0);
-        make.height.mas_offset(100);
-    }];
+
     [self.table mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view).mas_offset(0);
         make.top.mas_equalTo(self.topView.mas_bottom).mas_offset(0);
         make.width.mas_equalTo(self.view).mas_offset(0);
         make.height.mas_equalTo(self.view.mas_height).mas_offset(-(self.tabBarController.tabBar.frame.size.height+100));
     }];
+    
+    [self.addContactsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.topView).mas_offset(-25);
+        make.centerY.mas_equalTo(self.topView.title).mas_offset(0);
+        make.size.mas_offset(28);
+    }];
 }
 
 - (TopView *)topView{
     if(_topView == nil){
-        _topView = [[TopView alloc] init];
+        _topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, 393, 100)];
+        [_topView addSubview:self.addContactsBtn];
         _topView.title.text = @"通讯录";
     }
     return _topView;
@@ -62,6 +66,19 @@
     return _table;
 }
 
+- (UIButton *)addContactsBtn{
+    if(_addContactsBtn == nil){
+        _addContactsBtn = [[UIButton alloc] init];
+        [_addContactsBtn setBackgroundImage:[UIImage imageNamed:@"addBtn"] forState:UIControlStateNormal];
+        [_addContactsBtn addTarget:self action:@selector(moveToAddContactSViewController) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _addContactsBtn;
+}
+
+- (void)moveToAddContactSViewController {
+    AddContactsViewController *avc = [[AddContactsViewController alloc] init];
+    [self.navigationController pushViewController:avc animated:YES];
+}
 
 
 @end

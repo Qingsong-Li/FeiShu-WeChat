@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TopView : UIView
 
 @property(strong,nonatomic) UILabel *title;
-@property(strong,nonatomic) UIButton *addBtn;
 
 @end
 
