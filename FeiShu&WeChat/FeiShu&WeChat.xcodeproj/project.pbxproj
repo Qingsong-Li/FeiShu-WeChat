@@ -16,7 +16,10 @@
 		ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7639D2A1D9E1600B17333 /* RegisterView.m */; };
 		ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763A02A1D9EAA00B17333 /* RegisterViewController.m */; };
 		ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763F22A1F8EA700B17333 /* KeyChainManager.m */; };
-		ABA7641C2A232DC500B17333 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7641B2A232DC500B17333 /* MainViewController.m */; };
+		ABA764442A25D72100B17333 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764432A25D72100B17333 /* MyTabBarController.m */; };
+		ABA7644F2A2C7AFD00B17333 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7644E2A2C7AFD00B17333 /* ContactsViewController.m */; };
+		ABA764522A2C7B1E00B17333 /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764512A2C7B1E00B17333 /* TopView.m */; };
+		ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764542A3188F600B17333 /* StudentDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +40,14 @@
 		ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeiShu&WeChat.entitlements"; sourceTree = "<group>"; };
 		ABA763F12A1F8EA700B17333 /* KeyChainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyChainManager.h; sourceTree = "<group>"; };
 		ABA763F22A1F8EA700B17333 /* KeyChainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyChainManager.m; sourceTree = "<group>"; };
-		ABA7641A2A232DC500B17333 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		ABA7641B2A232DC500B17333 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		ABA764422A25D72100B17333 /* MyTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
+		ABA764432A25D72100B17333 /* MyTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
+		ABA7644D2A2C7AFD00B17333 /* ContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		ABA7644E2A2C7AFD00B17333 /* ContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		ABA764502A2C7B1E00B17333 /* TopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		ABA764512A2C7B1E00B17333 /* TopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
+		ABA764532A3188F600B17333 /* StudentDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentDataManager.h; sourceTree = "<group>"; };
+		ABA764542A3188F600B17333 /* StudentDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentDataManager.m; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,10 +133,48 @@
 		ABA764192A232D9700B17333 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				ABA7641A2A232DC500B17333 /* MainViewController.h */,
-				ABA7641B2A232DC500B17333 /* MainViewController.m */,
+				ABA764422A25D72100B17333 /* MyTabBarController.h */,
+				ABA764432A25D72100B17333 /* MyTabBarController.m */,
+				ABA764502A2C7B1E00B17333 /* TopView.h */,
+				ABA764512A2C7B1E00B17333 /* TopView.m */,
+				ABA7644C2A2C79D900B17333 /* MePage */,
+				ABA7644B2A2C79AA00B17333 /* DiscoverPage */,
+				ABA764492A2C798700B17333 /* ChatsPage */,
+				ABA7644A2A2C799F00B17333 /* ContactsPage */,
 			);
 			path = MainPage;
+			sourceTree = "<group>";
+		};
+		ABA764492A2C798700B17333 /* ChatsPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChatsPage;
+			sourceTree = "<group>";
+		};
+		ABA7644A2A2C799F00B17333 /* ContactsPage */ = {
+			isa = PBXGroup;
+			children = (
+				ABA7644D2A2C7AFD00B17333 /* ContactsViewController.h */,
+				ABA7644E2A2C7AFD00B17333 /* ContactsViewController.m */,
+				ABA764532A3188F600B17333 /* StudentDataManager.h */,
+				ABA764542A3188F600B17333 /* StudentDataManager.m */,
+			);
+			path = ContactsPage;
+			sourceTree = "<group>";
+		};
+		ABA7644B2A2C79AA00B17333 /* DiscoverPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DiscoverPage;
+			sourceTree = "<group>";
+		};
+		ABA7644C2A2C79D900B17333 /* MePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,10 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */,
+				ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */,
+				ABA764522A2C7B1E00B17333 /* TopView.m in Sources */,
+				ABA7644F2A2C7AFD00B17333 /* ContactsViewController.m in Sources */,
 				ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */,
 				ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */,
 				ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */,
-				ABA7641C2A232DC500B17333 /* MainViewController.m in Sources */,
+				ABA764442A25D72100B17333 /* MyTabBarController.m in Sources */,
 				ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */,
 				ABA763952A1D9A7200B17333 /* main.m in Sources */,
 			);

@@ -58,7 +58,7 @@
     
     if(status == errSecSuccess){
         NSDate *password = (__bridge NSDate*)passwordData;
-        NSString *passwordStr = [[NSString alloc] initWithData:(NSDate *_Nonnull)password encoding:NSUTF8StringEncoding];
+        NSString *passwordStr = [[NSString alloc] initWithData:(NSData * _Nonnull)password encoding:NSUTF8StringEncoding];
         
         //释放内存，避免导致泄漏
         if(passwordData != nil){

@@ -7,7 +7,7 @@
 
 #import "RegisterViewController.h"
 #import "KeyChainManager.h"
-#import "MainViewController.h"
+#import "MyTabBarController.h"
 
 @interface RegisterViewController ()
 
@@ -46,7 +46,7 @@
 //           });
            // (2)使用dismiss自带的block回调，在完成dismiss之后会调block中的push。
         [alertController dismissViewControllerAnimated:YES completion:^{
-            [self.navigationController pushViewController:[[MainViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[MyTabBarController alloc] init] animated:YES];
         }];
     }else if([self veritf] == NO){
         //密码错误则提示

@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 #import "RegisterViewController.h"
-#import "MainViewController.h"
+#import "MyTabBarController.h"
 #import <Security/Security.h>
 
 
@@ -26,6 +26,9 @@
 //    NSString *rightPassword = [KeyChainManager getPasswordWithAccount:@"redrock"];
 //    NSLog(@"%@",rightPassword);
     
+    NSString *s = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
+    NSLog(@"%@",s);
+    
     NSString *a = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     NSLog(@"%@",a);
     
@@ -33,14 +36,12 @@
     UINavigationController *nav = nil;
     if([self getStatus] == NO){
         nav = [[UINavigationController alloc] initWithRootViewController:[[RegisterViewController alloc] init]];
-        
     }else if([self getStatus] == YES){
-        nav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
+        nav = [[UINavigationController alloc] initWithRootViewController:[[MyTabBarController alloc] init]];
     }
+    [nav setNavigationBarHidden:YES animated:NO];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
-    
-    // Override point for customization after application launch.
     return YES;
 }
 
