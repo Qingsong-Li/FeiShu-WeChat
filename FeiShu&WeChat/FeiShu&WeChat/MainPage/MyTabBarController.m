@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [StudentDataManager getExternalContactsAndStoreInLocal];
     self.tabBar.backgroundColor = [UIColor systemGray6Color];
     ContactsViewController *cvc = [[ContactsViewController alloc] init];
     cvc.tabBarItem.title = @"通讯录";

@@ -29,9 +29,6 @@
     NSString *s = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     NSLog(@"%@",s);
     
-    NSString *a = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
-    NSLog(@"%@",a);
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UINavigationController *nav = nil;
     if([self getStatus] == NO){

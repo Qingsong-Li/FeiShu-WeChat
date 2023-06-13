@@ -21,6 +21,7 @@
 		ABA764522A2C7B1E00B17333 /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764512A2C7B1E00B17333 /* TopView.m */; };
 		ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764542A3188F600B17333 /* StudentDataManager.m */; };
 		ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764572A31B2DB00B17333 /* AddContactsViewController.m */; };
+		ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7645A2A38484600B17333 /* ContactsModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		ABA764542A3188F600B17333 /* StudentDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentDataManager.m; sourceTree = "<group>"; };
 		ABA764562A31B2DB00B17333 /* AddContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactsViewController.h; sourceTree = "<group>"; };
 		ABA764572A31B2DB00B17333 /* AddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsViewController.m; sourceTree = "<group>"; };
+		ABA764592A38484600B17333 /* ContactsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsModel.h; sourceTree = "<group>"; };
+		ABA7645A2A38484600B17333 /* ContactsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsModel.m; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +108,7 @@
 		ABA763812A1D9A7000B17333 /* FeiShu&WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				ABA7645E2A38489900B17333 /* Manager */,
 				ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */,
 				ABA764192A232D9700B17333 /* MainPage */,
 				ABA7639B2A1D9DBF00B17333 /* RegisterPage */,
@@ -116,8 +120,6 @@
 				ABA763902A1D9A7200B17333 /* LaunchScreen.storyboard */,
 				ABA763932A1D9A7200B17333 /* Info.plist */,
 				ABA763942A1D9A7200B17333 /* main.m */,
-				ABA763F12A1F8EA700B17333 /* KeyChainManager.h */,
-				ABA763F22A1F8EA700B17333 /* KeyChainManager.m */,
 			);
 			path = "FeiShu&WeChat";
 			sourceTree = "<group>";
@@ -158,12 +160,8 @@
 		ABA7644A2A2C799F00B17333 /* ContactsPage */ = {
 			isa = PBXGroup;
 			children = (
-				ABA7644D2A2C7AFD00B17333 /* ContactsViewController.h */,
-				ABA7644E2A2C7AFD00B17333 /* ContactsViewController.m */,
-				ABA764532A3188F600B17333 /* StudentDataManager.h */,
-				ABA764542A3188F600B17333 /* StudentDataManager.m */,
-				ABA764562A31B2DB00B17333 /* AddContactsViewController.h */,
-				ABA764572A31B2DB00B17333 /* AddContactsViewController.m */,
+				ABA7645D2A38487700B17333 /* Model */,
+				ABA7645C2A38484F00B17333 /* VC */,
 			);
 			path = ContactsPage;
 			sourceTree = "<group>";
@@ -180,6 +178,37 @@
 			children = (
 			);
 			path = MePage;
+			sourceTree = "<group>";
+		};
+		ABA7645C2A38484F00B17333 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				ABA7644D2A2C7AFD00B17333 /* ContactsViewController.h */,
+				ABA7644E2A2C7AFD00B17333 /* ContactsViewController.m */,
+				ABA764562A31B2DB00B17333 /* AddContactsViewController.h */,
+				ABA764572A31B2DB00B17333 /* AddContactsViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		ABA7645D2A38487700B17333 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABA764592A38484600B17333 /* ContactsModel.h */,
+				ABA7645A2A38484600B17333 /* ContactsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABA7645E2A38489900B17333 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				ABA764532A3188F600B17333 /* StudentDataManager.h */,
+				ABA764542A3188F600B17333 /* StudentDataManager.m */,
+				ABA763F12A1F8EA700B17333 /* KeyChainManager.h */,
+				ABA763F22A1F8EA700B17333 /* KeyChainManager.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +326,7 @@
 			files = (
 				ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */,
 				ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */,
+				ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */,
 				ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */,
 				ABA764522A2C7B1E00B17333 /* TopView.m in Sources */,
 				ABA7644F2A2C7AFD00B17333 /* ContactsViewController.m in Sources */,
