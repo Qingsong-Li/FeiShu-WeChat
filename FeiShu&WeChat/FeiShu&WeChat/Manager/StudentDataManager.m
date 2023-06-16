@@ -97,11 +97,18 @@
     return NO;
 }
 
-+ (NSMutableArray<ContactsModel *> *)initAllLoaclContact{
++ (NSDictionary *)initAllLocalContact{
+    //创建一个有26个从A到Z的键的字典
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    for (char c = 'A'; c <= 'Z'; c++) {
+        NSString *key = [NSString stringWithFormat:@"%c", c];
+        NSMutableArray *value = [NSMutableArray array];
+        [dic setObject:value forKey:key];
+    }
+    
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *dbPath = [path stringByAppendingPathComponent:@"Student.db"];
     FMDatabase *database  = [FMDatabase databaseWithPath:dbPath];
-    NSMutableArray *array = [NSMutableArray array];
     if([database open]){
         FMResultSet *result = [database executeQuery:@"SELECT * FROM students"];
         while([result next]){
@@ -114,10 +121,13 @@
             [model setValue:[result stringForColumn:@"depart"] forKey:@"depart"];
             [model setValue:[result stringForColumn:@"grade"] forKey:@"grade"];
             
-            [array addObject:model];
+            NSString *firstChar = [[model valueForKey:@"name"] substringToIndex:1]; // 获取第一个字
+            NSMutableString *mutableString = [firstChar mutableCopy];
+            CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, NO); // 转换为拼音
+            NSString *firstCharacter = [[mutableString substringToIndex:1] uppercaseString]; // 获取拼音首字母并转为大写
+            [[dic mutableArrayValueForKey:firstCharacter] addObject:model];
         }
     }
-    [database close];
-    return array;
+    return dic;
 }
 @end

@@ -11,14 +11,19 @@
 #import "Masonry.h"
 #import "ContactsModel.h"
 #import "StudentDataManager.h"
+#import "SearchCell.h"
+#import "ContactsCell.h"
 
-@interface ContactsViewController ()
+@interface ContactsViewController ()<
+UITableViewDelegate,
+UITableViewDataSource
+>
 
 @property(nonatomic,strong) TopView *topView;
 @property(nonatomic,strong) UITableView *table;
 @property(nonatomic,strong) UIButton *addContactsBtn;
 @property(nonatomic,strong) AddContactsViewController *avc;//添加联系人的页面
-@property(nonatomic,strong) NSMutableArray<ContactsModel *> *localContacts;
+@property(nonatomic,strong) NSDictionary *localContacts;//包含26个键对应26个字母，每个键对应的值为一个NSMutableArray存放联系人模型
 
 @end
 
@@ -29,8 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.table];
-    self.localContacts = [[StudentDataManager initAllLoaclContact] mutableCopy];
-   
+    self.localContacts = [StudentDataManager initAllLocalContact];//初始化所以本地联系人
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -54,15 +58,6 @@
     }];
 }
 
-- (UIButton *)addContactsBtn{
-    if(_addContactsBtn == nil){
-        _addContactsBtn = [[UIButton alloc] init];
-        [_addContactsBtn setBackgroundImage:[UIImage imageNamed:@"addBtn"] forState:UIControlStateNormal];
-        [_addContactsBtn addTarget:self action:@selector(moveToAddContactSViewController) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _addContactsBtn;
-}
-
 - (void)moveToAddContactSViewController {
     [self.navigationController pushViewController:self.avc animated:YES];
 }
@@ -75,7 +70,12 @@
         ContactsModel *model = [StudentDataManager getStudentWithStunum:self.avc.searchField.text];
         if(model != nil && model.stunum != nil){
             if([StudentDataManager saveToLocalWithContact:model]){
-                [self.localContacts addObject:model];
+                
+                NSString *firstChar = [[model valueForKey:@"name"] substringToIndex:1]; // 获取第一个字
+                NSMutableString *mutableString = [firstChar mutableCopy];
+                CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, NO); // 转换为拼音
+                NSString *firstCharacter = [[mutableString substringToIndex:1] uppercaseString]; // 获取拼音首字母并转为大写
+                [[self.localContacts mutableArrayValueForKey:firstCharacter] addObject:model];
                 [self alertWithHint:@"添加成功" comfirm:NO];
             }else{
                 [self alertWithHint:@"该联系人已存在" comfirm:YES];
@@ -84,6 +84,7 @@
             [self alertWithHint:@"未查询到该联系人" comfirm:YES];
         }
     }
+    [self.table reloadData];
 }
 
 //提示窗口，参数分别为提示信息和是否需要手动确认
@@ -103,6 +104,117 @@
 }
 
 
+#pragma mark -Delegate
+
+//组数仅为储存数据的字典中键对应的非空数组的个数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    //将所有值为非空数组的键存放进数组，并返回这个数组的conut作为组数
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSString *key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            [array addObject:key];
+        }
+    }
+    return array.count+1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return 0.0000001;
+    }
+    return 40;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if(section == tableView.numberOfSections){
+        return 50;
+    }else{
+        return 0.000001;
+    }
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectZero];
+        return headerView;
+    }
+    //将所有值为非空数组的键存放进数组
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSString *key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            [array addObject:key];
+        }
+    }
+    //排序
+    array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    //自定义headerview
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, tableView.bounds.size.width - 30, 40)];
+       titleLabel.textColor = [UIColor systemGrayColor];
+       titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
+       titleLabel.text = array[section-1]; // 使用存储非空数组的键来设置标题
+       [headerView addSubview:titleLabel];
+    return headerView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(section == 0){
+        return 1;
+    }else{
+        NSMutableArray *array = [NSMutableArray array];
+        for(NSString *key in self.localContacts){
+            NSArray *a = self.localContacts[key];
+            if(a.count>0){
+                [array addObject:key];
+            }
+        }
+        //排序
+        array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+        
+        return [self.localContacts mutableArrayValueForKey:array[section-1]].count;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 65;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //顶部的搜索本地联系人
+    if(indexPath.section == 0){
+        SearchCell *searchCell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
+        if(searchCell == nil){
+            searchCell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchCell"];
+        }
+        return searchCell;
+    }
+    //每个联系人cell
+    ContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if(cell == nil){
+        cell  = [[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSString *key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            [array addObject:key];
+        }
+    }
+    //排序
+    array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+//    NSLog(@"%ld",(long)indexPath.section);
+//    NSLog(@"%ld",(long)indexPath.item);
+    NSMutableArray *a =[self.localContacts mutableArrayValueForKey:array[indexPath.section-1]];
+    ContactsModel *model = a[indexPath.item];
+    cell.nameLab.text = model.name;
+    [cell setHeadImgWithName:model.name];
+    return cell;
+}
+
+
 #pragma mark -Lazy
 - (TopView *)topView{
     if(_topView == nil){
@@ -115,11 +227,17 @@
 
 - (UITableView *)table{
     if(_table == nil){
-        _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        //此处不设置为Group样式的原因是Group样式下的Header不会自动悬浮，导致每个section之间会有空隙，需要手动返回一个大小为零的FooterView，即使设置heightForFooter为0也不能解决
         _table.backgroundColor = [UIColor redColor];
+        _table.sectionHeaderTopPadding = 0;
+        _table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _table.delegate = self;
+        _table.dataSource = self;
     }
     return _table;
 }
+
 - (AddContactsViewController *)avc{
     if(_avc == nil){
         _avc = [[AddContactsViewController alloc] init];
@@ -128,9 +246,24 @@
     return _avc;
 }
 
-- (NSMutableArray<ContactsModel *> *)localContacts{
+- (UIButton *)addContactsBtn{
+    if(_addContactsBtn == nil){
+        _addContactsBtn = [[UIButton alloc] init];
+        [_addContactsBtn setBackgroundImage:[UIImage imageNamed:@"addBtn"] forState:UIControlStateNormal];
+        [_addContactsBtn addTarget:self action:@selector(moveToAddContactSViewController) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _addContactsBtn;
+}
+
+- (NSDictionary *)localContacts{
     if(_localContacts == nil){
-        _localContacts = [NSMutableArray array];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        for (char c = 'A'; c <= 'Z'; c++) {
+            NSString *key = [NSString stringWithFormat:@"%c", c];
+            NSMutableArray *value = [NSMutableArray array];
+            [dic setObject:value forKey:key];
+        }
+        _localContacts = [NSDictionary dictionaryWithDictionary:dic];
     }
     return _localContacts;
 }

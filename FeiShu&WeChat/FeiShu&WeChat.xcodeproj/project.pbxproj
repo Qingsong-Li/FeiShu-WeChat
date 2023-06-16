@@ -22,6 +22,8 @@
 		ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764542A3188F600B17333 /* StudentDataManager.m */; };
 		ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA764572A31B2DB00B17333 /* AddContactsViewController.m */; };
 		ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7645A2A38484600B17333 /* ContactsModel.m */; };
+		ABC9E2B42A3AD2CF00192BFC /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC9E2B32A3AD2CF00192BFC /* SearchCell.m */; };
+		ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC9E2B62A3AE42700192BFC /* ContactsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,10 @@
 		ABA764572A31B2DB00B17333 /* AddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsViewController.m; sourceTree = "<group>"; };
 		ABA764592A38484600B17333 /* ContactsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsModel.h; sourceTree = "<group>"; };
 		ABA7645A2A38484600B17333 /* ContactsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsModel.m; sourceTree = "<group>"; };
+		ABC9E2B22A3AD2CF00192BFC /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		ABC9E2B32A3AD2CF00192BFC /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		ABC9E2B52A3AE42700192BFC /* ContactsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
+		ABC9E2B62A3AE42700192BFC /* ContactsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +166,7 @@
 		ABA7644A2A2C799F00B17333 /* ContactsPage */ = {
 			isa = PBXGroup;
 			children = (
+				ABC9E2B12A3AD2B000192BFC /* View */,
 				ABA7645D2A38487700B17333 /* Model */,
 				ABA7645C2A38484F00B17333 /* VC */,
 			);
@@ -209,6 +216,17 @@
 				ABA763F22A1F8EA700B17333 /* KeyChainManager.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		ABC9E2B12A3AD2B000192BFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABC9E2B22A3AD2CF00192BFC /* SearchCell.h */,
+				ABC9E2B32A3AD2CF00192BFC /* SearchCell.m */,
+				ABC9E2B52A3AE42700192BFC /* ContactsCell.h */,
+				ABC9E2B62A3AE42700192BFC /* ContactsCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +344,12 @@
 			files = (
 				ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */,
 				ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */,
+				ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */,
 				ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */,
 				ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */,
 				ABA764522A2C7B1E00B17333 /* TopView.m in Sources */,
 				ABA7644F2A2C7AFD00B17333 /* ContactsViewController.m in Sources */,
+				ABC9E2B42A3AD2CF00192BFC /* SearchCell.m in Sources */,
 				ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */,
 				ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */,
 				ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */,
