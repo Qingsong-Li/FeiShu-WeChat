@@ -23,6 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.nameLab];
         [self.contentView addSubview:self.headImg];
         [self.contentView addSubview:self.separator];

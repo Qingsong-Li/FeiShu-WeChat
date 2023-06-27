@@ -16,7 +16,8 @@
 
 @interface ContactsViewController ()<
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+SearchCellDelegate
 >
 
 @property(nonatomic,strong) TopView *topView;
@@ -24,6 +25,7 @@ UITableViewDataSource
 @property(nonatomic,strong) UIButton *addContactsBtn;
 @property(nonatomic,strong) AddContactsViewController *avc;//添加联系人的页面
 @property(nonatomic,strong) NSDictionary *localContacts;//包含26个键对应26个字母，每个键对应的值为一个NSMutableArray存放联系人模型
+@property(nonatomic,strong) SearchCell *searchCell;//顶部用于查找本地联系人的cell
 
 @end
 
@@ -62,7 +64,7 @@ UITableViewDataSource
     [self.navigationController pushViewController:self.avc animated:YES];
 }
 
-//将一个联系人添加到用于储存本地联系人的数组
+//将一个联系人添加到用于储存本地联系人的字典
 - (void)add{
     if([self.avc.searchField.text length] == 0){
         [self alertWithHint:@"不能为空" comfirm:YES];
@@ -104,7 +106,7 @@ UITableViewDataSource
 }
 
 
-#pragma mark -Delegate
+#pragma mark -TableDelegate
 
 //组数仅为储存数据的字典中键对应的非空数组的个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -185,11 +187,7 @@ UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //顶部的搜索本地联系人
     if(indexPath.section == 0){
-        SearchCell *searchCell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
-        if(searchCell == nil){
-            searchCell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchCell"];
-        }
-        return searchCell;
+        return self.searchCell;
     }
     //每个联系人cell
     ContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -214,6 +212,60 @@ UITableViewDataSource
     return cell;
 }
 
+#pragma mark -SearchCellDelegate
+
+- (void)searchContact{
+    NSString *name = self.searchCell.searchField.text;
+    if([name length] == 0){
+        [self alertWithHint:@"请输入联系人姓名后再点击" comfirm:YES];
+        return;
+    }
+    //获取到需要显示的字母
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSString *key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            [array addObject:key];
+        }
+    }
+    //对需要显示的字母排序
+    array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    //查找联系人，如查找到就保存其所在的section和item，用于后续通过indexpath定位
+    NSString *key = [NSString string];
+    NSInteger count = 0;
+    NSInteger flag = 0;//用于break外层循环以及标记输入联系人是否找到
+    for( key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            for(ContactsModel *model in a){
+                if([name isEqualToString:model.name]){
+                    count = [a indexOfObject:model];
+                    flag = 1 ;
+                    break;
+                }
+            }
+        }
+        if(flag == 1){
+            break;
+        }
+    }
+    if(flag == 1){
+        NSIndexPath *index = [NSIndexPath indexPathForItem:count inSection:[array indexOfObject:key]+1];
+        [self.table scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [[self.table cellForRowAtIndexPath:index] setSelected:YES];
+        CGFloat delay = 0.2;
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [[self.table cellForRowAtIndexPath:index] setSelected:NO];
+        });
+    }else{
+        [self alertWithHint:@"该联系人不存在" comfirm:NO];
+    }
+    
+    
+    
+
+}
 
 #pragma mark -Lazy
 - (TopView *)topView{
@@ -225,11 +277,18 @@ UITableViewDataSource
     return _topView;
 }
 
+- (SearchCell *)searchCell{
+    if(_searchCell == nil){
+        _searchCell = [[SearchCell alloc] init];
+        _searchCell.delegate = self;
+    }
+    return _searchCell;
+}
+
 - (UITableView *)table{
     if(_table == nil){
         _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         //此处不设置为Group样式的原因是Group样式下的Header不会自动悬浮，导致每个section之间会有空隙，需要手动返回一个大小为零的FooterView，即使设置heightForFooter为0也不能解决
-        _table.backgroundColor = [UIColor redColor];
         _table.sectionHeaderTopPadding = 0;
         _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         _table.delegate = self;

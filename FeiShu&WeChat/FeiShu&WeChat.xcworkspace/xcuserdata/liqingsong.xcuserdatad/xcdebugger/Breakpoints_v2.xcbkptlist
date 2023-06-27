@@ -46,8 +46,8 @@
             filePath = "FeiShu&amp;WeChat/MainPage/ContactsPage/VC/ContactsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "FeiShu&amp;WeChat/MainPage/ContactsPage/VC/ContactsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>

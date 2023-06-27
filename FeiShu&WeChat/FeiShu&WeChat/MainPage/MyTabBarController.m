@@ -20,7 +20,7 @@
     self.tabBar.backgroundColor = [UIColor systemGray6Color];
     ContactsViewController *cvc = [[ContactsViewController alloc] init];
     cvc.tabBarItem.title = @"通讯录";
-    cvc.tabBarItem.image = [[UIImage imageNamed:@"通讯录"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    cvc.tabBarItem.image = [UIImage imageNamed:@"通讯录"];
     [self addChildViewController:cvc];
     // Do any additional setup after loading the view.
 }
