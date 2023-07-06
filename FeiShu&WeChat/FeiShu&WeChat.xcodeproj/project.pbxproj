@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6351A516DBD43A0A373D673C /* Pods_FeiShu_WeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */; };
+		AB34BBC52A57142400320503 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34BBC42A57142400320503 /* ChatModel.m */; };
+		AB34BBC92A57175700320503 /* chatData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB34BBC82A57175700320503 /* chatData.plist */; };
+		AB34BBCD2A571B9F00320503 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34BBCC2A571B9F00320503 /* ChatCell.m */; };
 		ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763832A1D9A7000B17333 /* AppDelegate.m */; };
 		ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763892A1D9A7000B17333 /* ViewController.m */; };
 		ABA7638F2A1D9A7200B17333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA7638E2A1D9A7200B17333 /* Assets.xcassets */; };
@@ -24,10 +27,17 @@
 		ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA7645A2A38484600B17333 /* ContactsModel.m */; };
 		ABC9E2B42A3AD2CF00192BFC /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC9E2B32A3AD2CF00192BFC /* SearchCell.m */; };
 		ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC9E2B62A3AE42700192BFC /* ContactsCell.m */; };
+		ABD667D92A4D7C000083E29F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD667D82A4D7C000083E29F /* ChatViewController.m */; };
+		ABD667DD2A4D85580083E29F /* MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD667DC2A4D85580083E29F /* MyColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F2466C149BCB63F306DCAE5 /* Pods-FeiShu&WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.debug.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.debug.xcconfig"; sourceTree = "<group>"; };
+		AB34BBC32A57142400320503 /* ChatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		AB34BBC42A57142400320503 /* ChatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		AB34BBC82A57175700320503 /* chatData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chatData.plist; sourceTree = "<group>"; };
+		AB34BBCB2A571B9F00320503 /* ChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		AB34BBCC2A571B9F00320503 /* ChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		ABA7637F2A1D9A7000B17333 /* FeiShu&WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FeiShu&WeChat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABA763822A1D9A7000B17333 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABA763832A1D9A7000B17333 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +70,10 @@
 		ABC9E2B32A3AD2CF00192BFC /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		ABC9E2B52A3AE42700192BFC /* ContactsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
 		ABC9E2B62A3AE42700192BFC /* ContactsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
+		ABD667D72A4D7C000083E29F /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		ABD667D82A4D7C000083E29F /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		ABD667DB2A4D85580083E29F /* MyColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyColors.h; sourceTree = "<group>"; };
+		ABD667DC2A4D85580083E29F /* MyColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyColors.m; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +107,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB34BBC12A56A7A500320503 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				ABD667D72A4D7C000083E29F /* ChatViewController.h */,
+				ABD667D82A4D7C000083E29F /* ChatViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		AB34BBC22A56A7AD00320503 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB34BBC32A57142400320503 /* ChatModel.h */,
+				AB34BBC42A57142400320503 /* ChatModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB34BBCA2A571B4A00320503 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB34BBCB2A571B9F00320503 /* ChatCell.h */,
+				AB34BBCC2A571B9F00320503 /* ChatCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ABA763762A1D9A7000B17333 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +155,7 @@
 		ABA763812A1D9A7000B17333 /* FeiShu&WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				ABD667DA2A4D85370083E29F /* Tool */,
 				ABA7645E2A38489900B17333 /* Manager */,
 				ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */,
 				ABA764192A232D9700B17333 /* MainPage */,
@@ -124,6 +166,7 @@
 				ABA763892A1D9A7000B17333 /* ViewController.m */,
 				ABA7638E2A1D9A7200B17333 /* Assets.xcassets */,
 				ABA763902A1D9A7200B17333 /* LaunchScreen.storyboard */,
+				AB34BBC82A57175700320503 /* chatData.plist */,
 				ABA763932A1D9A7200B17333 /* Info.plist */,
 				ABA763942A1D9A7200B17333 /* main.m */,
 			);
@@ -150,8 +193,8 @@
 				ABA764512A2C7B1E00B17333 /* TopView.m */,
 				ABA7644C2A2C79D900B17333 /* MePage */,
 				ABA7644B2A2C79AA00B17333 /* DiscoverPage */,
-				ABA764492A2C798700B17333 /* ChatsPage */,
 				ABA7644A2A2C799F00B17333 /* ContactsPage */,
+				ABA764492A2C798700B17333 /* ChatsPage */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -159,6 +202,9 @@
 		ABA764492A2C798700B17333 /* ChatsPage */ = {
 			isa = PBXGroup;
 			children = (
+				AB34BBCA2A571B4A00320503 /* View */,
+				AB34BBC22A56A7AD00320503 /* Model */,
+				AB34BBC12A56A7A500320503 /* VC */,
 			);
 			path = ChatsPage;
 			sourceTree = "<group>";
@@ -229,6 +275,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		ABD667DA2A4D85370083E29F /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				ABD667DB2A4D85580083E29F /* MyColors.h */,
+				ABD667DC2A4D85580083E29F /* MyColors.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -289,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABA763922A1D9A7200B17333 /* LaunchScreen.storyboard in Resources */,
+				AB34BBC92A57175700320503 /* chatData.plist in Resources */,
 				ABA7638F2A1D9A7200B17333 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +400,8 @@
 			files = (
 				ABA763A12A1D9EAA00B17333 /* RegisterViewController.m in Sources */,
 				ABA764552A3188F600B17333 /* StudentDataManager.m in Sources */,
+				ABD667D92A4D7C000083E29F /* ChatViewController.m in Sources */,
+				AB34BBCD2A571B9F00320503 /* ChatCell.m in Sources */,
 				ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */,
 				ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */,
 				ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */,
@@ -353,7 +411,9 @@
 				ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */,
 				ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */,
 				ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */,
+				AB34BBC52A57142400320503 /* ChatModel.m in Sources */,
 				ABA764442A25D72100B17333 /* MyTabBarController.m in Sources */,
+				ABD667DD2A4D85580083E29F /* MyColors.m in Sources */,
 				ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */,
 				ABA763952A1D9A7200B17333 /* main.m in Sources */,
 			);

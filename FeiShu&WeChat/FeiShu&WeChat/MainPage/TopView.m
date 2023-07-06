@@ -20,6 +20,18 @@
     return self;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if(self){
+        self.frame = CGRectMake(0, 0, 393, 100);
+        self.backgroundColor = [UIColor systemGray6Color];
+        [self addSubview:self.title];
+        [self setMasonry];
+    }
+    return self;
+}
+
+
 - (void)setMasonry{
     [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self).mas_offset(0);
@@ -32,7 +44,7 @@
 - (UILabel *)title{
     if(_title == nil){
         _title = [[UILabel alloc]init];
-        _title.font = [UIFont boldSystemFontOfSize:19];
+        _title.font = [UIFont systemFontOfSize:20];
         _title.textAlignment = NSTextAlignmentCenter;
     }
     return _title;

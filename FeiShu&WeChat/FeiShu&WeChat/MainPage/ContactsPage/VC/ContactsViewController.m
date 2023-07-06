@@ -207,11 +207,12 @@ SearchCellDelegate
 //    NSLog(@"%ld",(long)indexPath.item);
     NSMutableArray *a =[self.localContacts mutableArrayValueForKey:array[indexPath.section-1]];
     ContactsModel *model = a[indexPath.item];
-    cell.nameLab.text = model.name;
-    [cell setHeadImgWithName:model.name];
+    cell.nameLab.text = [model valueForKey:@"name"];
+    [cell setHeadImgWithName:[model valueForKey:@"name"]];
     return cell;
 }
 
+    
 #pragma mark -SearchCellDelegate
 
 - (void)searchContact{
@@ -251,12 +252,16 @@ SearchCellDelegate
     }
     if(flag == 1){
         NSIndexPath *index = [NSIndexPath indexPathForItem:count inSection:[array indexOfObject:key]+1];
-        [self.table scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionTop animated:NO];
-        [[self.table cellForRowAtIndexPath:index] setSelected:YES];
-        CGFloat delay = 0.2;
+        
+        [self.table scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        CGFloat delay = 0.5;
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-            [[self.table cellForRowAtIndexPath:index] setSelected:NO];
+            [[self.table cellForRowAtIndexPath:index] setBackgroundColor:[UIColor systemGray6Color]];
+        });
+        dispatch_time_t delayTime1 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay*1.5 * NSEC_PER_SEC));
+        dispatch_after(delayTime1, dispatch_get_main_queue(), ^{
+            [[self.table cellForRowAtIndexPath:index] setBackgroundColor:[UIColor whiteColor]];
         });
     }else{
         [self alertWithHint:@"该联系人不存在" comfirm:NO];

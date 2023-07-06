@@ -6,6 +6,7 @@
 //
 
 #import "ContactsCell.h"
+#import "MyColors.h"
 
 @implementation ContactsCell
 
@@ -38,8 +39,7 @@
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
 
     // 随机生成背景颜色
-    UIColor *backgroundColor = [self randomColor];
-
+    UIColor *backgroundColor = [MyColors getRandomColor];
     [backgroundColor setFill];
     UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height));
     // 设置文本属性
@@ -84,21 +84,6 @@
     return _separator;
 }
 
-- (UIColor *)randomColor{
-    UIColor *randomColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0
-                                           green:arc4random_uniform(256)/255.0
-                                            blue:arc4random_uniform(256)/255.0
-                                           alpha:1.0];
-    //过滤一些较浅的颜色
-    CGFloat brightness;
-    [randomColor getHue:nil saturation:nil brightness:&brightness alpha:nil];
-    CGFloat brightnessThreshold = 0.7;
-    if (brightness < brightnessThreshold) {
-        return [self randomColor];
-    }
-    else {
-        return randomColor;
-    }
-    return randomColor;
-}
+
+//}
 @end

@@ -65,7 +65,7 @@
     if(_searchField == nil){
         _searchField = [[UITextField alloc] init];
         _searchField.backgroundColor = [UIColor systemGray6Color];
-        _searchField.placeholder = @"        🔍    学号/姓名";
+        _searchField.placeholder = @"请输入您想添加的联系人学号";
         _searchField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 
     }
