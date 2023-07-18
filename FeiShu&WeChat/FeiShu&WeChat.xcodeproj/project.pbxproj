@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		6351A516DBD43A0A373D673C /* Pods_FeiShu_WeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */; };
+		AB2A6D392A6438FC001B4282 /* PublishMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A6D382A6438FC001B4282 /* PublishMomentViewController.m */; };
+		AB2A6D3C2A644ECD001B4282 /* PublishPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A6D3B2A644ECD001B4282 /* PublishPageView.m */; };
+		AB2A6D3F2A65637A001B4282 /* MyTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A6D3E2A65637A001B4282 /* MyTime.m */; };
+		AB30E58F2A61353D00B79F9F /* momentsData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB30E58E2A61353D00B79F9F /* momentsData.plist */; };
+		AB30E5922A6137D100B79F9F /* MomentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E5912A6137D100B79F9F /* MomentModel.m */; };
+		AB30E59B2A61454900B79F9F /* MomentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E59A2A61454900B79F9F /* MomentTableViewCell.m */; };
+		AB30E5A12A62904000B79F9F /* MoreFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E5A02A62904000B79F9F /* MoreFuncView.m */; };
 		AB34BBC52A57142400320503 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34BBC42A57142400320503 /* ChatModel.m */; };
 		AB34BBC92A57175700320503 /* chatData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB34BBC82A57175700320503 /* chatData.plist */; };
 		AB34BBCD2A571B9F00320503 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34BBCC2A571B9F00320503 /* ChatCell.m */; };
+		AB34BBF52A58D7C400320503 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34BBF42A58D7C400320503 /* MeViewController.m */; };
 		ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763832A1D9A7000B17333 /* AppDelegate.m */; };
 		ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA763892A1D9A7000B17333 /* ViewController.m */; };
 		ABA7638F2A1D9A7200B17333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA7638E2A1D9A7200B17333 /* Assets.xcassets */; };
@@ -29,15 +37,32 @@
 		ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC9E2B62A3AE42700192BFC /* ContactsCell.m */; };
 		ABD667D92A4D7C000083E29F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD667D82A4D7C000083E29F /* ChatViewController.m */; };
 		ABD667DD2A4D85580083E29F /* MyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD667DC2A4D85580083E29F /* MyColors.m */; };
+		ABE1E81B2A5FDB3B004B7B3C /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1E81A2A5FDB3B004B7B3C /* DiscoverViewController.m */; };
+		ABE1E8202A5FEBC1004B7B3C /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE1E81F2A5FEBC1004B7B3C /* Discover.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F2466C149BCB63F306DCAE5 /* Pods-FeiShu&WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.debug.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.debug.xcconfig"; sourceTree = "<group>"; };
+		AB2A6D372A6438FC001B4282 /* PublishMomentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishMomentViewController.h; sourceTree = "<group>"; };
+		AB2A6D382A6438FC001B4282 /* PublishMomentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishMomentViewController.m; sourceTree = "<group>"; };
+		AB2A6D3A2A644ECD001B4282 /* PublishPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishPageView.h; sourceTree = "<group>"; };
+		AB2A6D3B2A644ECD001B4282 /* PublishPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishPageView.m; sourceTree = "<group>"; };
+		AB2A6D3D2A65637A001B4282 /* MyTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTime.h; sourceTree = "<group>"; };
+		AB2A6D3E2A65637A001B4282 /* MyTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTime.m; sourceTree = "<group>"; };
+		AB30E58E2A61353D00B79F9F /* momentsData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = momentsData.plist; sourceTree = "<group>"; };
+		AB30E5902A6137D100B79F9F /* MomentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MomentModel.h; sourceTree = "<group>"; };
+		AB30E5912A6137D100B79F9F /* MomentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentModel.m; sourceTree = "<group>"; };
+		AB30E5992A61454900B79F9F /* MomentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MomentTableViewCell.h; sourceTree = "<group>"; };
+		AB30E59A2A61454900B79F9F /* MomentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MomentTableViewCell.m; sourceTree = "<group>"; };
+		AB30E59F2A62904000B79F9F /* MoreFuncView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreFuncView.h; sourceTree = "<group>"; };
+		AB30E5A02A62904000B79F9F /* MoreFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreFuncView.m; sourceTree = "<group>"; };
 		AB34BBC32A57142400320503 /* ChatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		AB34BBC42A57142400320503 /* ChatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		AB34BBC82A57175700320503 /* chatData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chatData.plist; sourceTree = "<group>"; };
 		AB34BBCB2A571B9F00320503 /* ChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
 		AB34BBCC2A571B9F00320503 /* ChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		AB34BBF32A58D7C400320503 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		AB34BBF42A58D7C400320503 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		ABA7637F2A1D9A7000B17333 /* FeiShu&WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FeiShu&WeChat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABA763822A1D9A7000B17333 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABA763832A1D9A7000B17333 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +99,9 @@
 		ABD667D82A4D7C000083E29F /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		ABD667DB2A4D85580083E29F /* MyColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyColors.h; sourceTree = "<group>"; };
 		ABD667DC2A4D85580083E29F /* MyColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyColors.m; sourceTree = "<group>"; };
+		ABE1E8192A5FDB3B004B7B3C /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		ABE1E81A2A5FDB3B004B7B3C /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		ABE1E81F2A5FEBC1004B7B3C /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
 		D6BAE0E8C57ABF4C14CE4DD5 /* Pods_FeiShu_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeiShu_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7444D33F9BA4ED450372A9 /* Pods-FeiShu&WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeiShu&WeChat.release.xcconfig"; path = "Target Support Files/Pods-FeiShu&WeChat/Pods-FeiShu&WeChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,20 +183,14 @@
 		ABA763812A1D9A7000B17333 /* FeiShu&WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				ABA7639B2A1D9DBF00B17333 /* RegisterPage */,
+				ABA764192A232D9700B17333 /* MainPage */,
+				ABE1E8162A5FD61C004B7B3C /* Data */,
+				ABE1E8152A5FD5FB004B7B3C /* Supporting Files */,
 				ABD667DA2A4D85370083E29F /* Tool */,
 				ABA7645E2A38489900B17333 /* Manager */,
 				ABA763A22A1EFA0E00B17333 /* FeiShu&WeChat.entitlements */,
-				ABA764192A232D9700B17333 /* MainPage */,
-				ABA7639B2A1D9DBF00B17333 /* RegisterPage */,
-				ABA763822A1D9A7000B17333 /* AppDelegate.h */,
-				ABA763832A1D9A7000B17333 /* AppDelegate.m */,
-				ABA763882A1D9A7000B17333 /* ViewController.h */,
-				ABA763892A1D9A7000B17333 /* ViewController.m */,
-				ABA7638E2A1D9A7200B17333 /* Assets.xcassets */,
-				ABA763902A1D9A7200B17333 /* LaunchScreen.storyboard */,
-				AB34BBC82A57175700320503 /* chatData.plist */,
 				ABA763932A1D9A7200B17333 /* Info.plist */,
-				ABA763942A1D9A7200B17333 /* main.m */,
 			);
 			path = "FeiShu&WeChat";
 			sourceTree = "<group>";
@@ -222,6 +244,11 @@
 		ABA7644B2A2C79AA00B17333 /* DiscoverPage */ = {
 			isa = PBXGroup;
 			children = (
+				ABE1E8232A5FF435004B7B3C /* Model */,
+				ABE1E8222A5FF42F004B7B3C /* View */,
+				ABE1E8212A5FF41D004B7B3C /* ViewController */,
+				AB30E58E2A61353D00B79F9F /* momentsData.plist */,
+				ABE1E81F2A5FEBC1004B7B3C /* Discover.xcassets */,
 			);
 			path = DiscoverPage;
 			sourceTree = "<group>";
@@ -229,6 +256,8 @@
 		ABA7644C2A2C79D900B17333 /* MePage */ = {
 			isa = PBXGroup;
 			children = (
+				AB34BBF32A58D7C400320503 /* MeViewController.h */,
+				AB34BBF42A58D7C400320503 /* MeViewController.m */,
 			);
 			path = MePage;
 			sourceTree = "<group>";
@@ -280,8 +309,65 @@
 			children = (
 				ABD667DB2A4D85580083E29F /* MyColors.h */,
 				ABD667DC2A4D85580083E29F /* MyColors.m */,
+				AB2A6D3D2A65637A001B4282 /* MyTime.h */,
+				AB2A6D3E2A65637A001B4282 /* MyTime.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		ABE1E8152A5FD5FB004B7B3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABA763822A1D9A7000B17333 /* AppDelegate.h */,
+				ABA763832A1D9A7000B17333 /* AppDelegate.m */,
+				ABA763882A1D9A7000B17333 /* ViewController.h */,
+				ABA763892A1D9A7000B17333 /* ViewController.m */,
+				ABA763902A1D9A7200B17333 /* LaunchScreen.storyboard */,
+				ABA763942A1D9A7200B17333 /* main.m */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABE1E8162A5FD61C004B7B3C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ABA7638E2A1D9A7200B17333 /* Assets.xcassets */,
+				AB34BBC82A57175700320503 /* chatData.plist */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		ABE1E8212A5FF41D004B7B3C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1E8192A5FDB3B004B7B3C /* DiscoverViewController.h */,
+				ABE1E81A2A5FDB3B004B7B3C /* DiscoverViewController.m */,
+				AB2A6D372A6438FC001B4282 /* PublishMomentViewController.h */,
+				AB2A6D382A6438FC001B4282 /* PublishMomentViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABE1E8222A5FF42F004B7B3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB30E5992A61454900B79F9F /* MomentTableViewCell.h */,
+				AB30E59A2A61454900B79F9F /* MomentTableViewCell.m */,
+				AB30E59F2A62904000B79F9F /* MoreFuncView.h */,
+				AB30E5A02A62904000B79F9F /* MoreFuncView.m */,
+				AB2A6D3A2A644ECD001B4282 /* PublishPageView.h */,
+				AB2A6D3B2A644ECD001B4282 /* PublishPageView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABE1E8232A5FF435004B7B3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB30E5902A6137D100B79F9F /* MomentModel.h */,
+				AB30E5912A6137D100B79F9F /* MomentModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,7 +429,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE1E8202A5FEBC1004B7B3C /* Discover.xcassets in Resources */,
 				ABA763922A1D9A7200B17333 /* LaunchScreen.storyboard in Resources */,
+				AB30E58F2A61353D00B79F9F /* momentsData.plist in Resources */,
 				AB34BBC92A57175700320503 /* chatData.plist in Resources */,
 				ABA7638F2A1D9A7200B17333 /* Assets.xcassets in Resources */,
 			);
@@ -403,17 +491,25 @@
 				ABD667D92A4D7C000083E29F /* ChatViewController.m in Sources */,
 				AB34BBCD2A571B9F00320503 /* ChatCell.m in Sources */,
 				ABC9E2B72A3AE42700192BFC /* ContactsCell.m in Sources */,
+				AB30E5922A6137D100B79F9F /* MomentModel.m in Sources */,
+				ABE1E81B2A5FDB3B004B7B3C /* DiscoverViewController.m in Sources */,
 				ABA7645B2A38484600B17333 /* ContactsModel.m in Sources */,
 				ABA764582A31B2DB00B17333 /* AddContactsViewController.m in Sources */,
 				ABA764522A2C7B1E00B17333 /* TopView.m in Sources */,
+				AB2A6D3C2A644ECD001B4282 /* PublishPageView.m in Sources */,
+				AB30E5A12A62904000B79F9F /* MoreFuncView.m in Sources */,
 				ABA7644F2A2C7AFD00B17333 /* ContactsViewController.m in Sources */,
 				ABC9E2B42A3AD2CF00192BFC /* SearchCell.m in Sources */,
+				AB2A6D3F2A65637A001B4282 /* MyTime.m in Sources */,
 				ABA7638A2A1D9A7000B17333 /* ViewController.m in Sources */,
+				AB2A6D392A6438FC001B4282 /* PublishMomentViewController.m in Sources */,
 				ABA7639E2A1D9E1600B17333 /* RegisterView.m in Sources */,
 				ABA763F32A1F8EA700B17333 /* KeyChainManager.m in Sources */,
+				AB34BBF52A58D7C400320503 /* MeViewController.m in Sources */,
 				AB34BBC52A57142400320503 /* ChatModel.m in Sources */,
 				ABA764442A25D72100B17333 /* MyTabBarController.m in Sources */,
 				ABD667DD2A4D85580083E29F /* MyColors.m in Sources */,
+				AB30E59B2A61454900B79F9F /* MomentTableViewCell.m in Sources */,
 				ABA763842A1D9A7000B17333 /* AppDelegate.m in Sources */,
 				ABA763952A1D9A7200B17333 /* main.m in Sources */,
 			);
@@ -560,6 +656,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,6 +686,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

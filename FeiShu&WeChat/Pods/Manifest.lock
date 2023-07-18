@@ -18,23 +18,27 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - Masonry (1.1.0)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - AFNetworking
   - FMDB
   - Masonry
+  - YYText
 
 SPEC REPOS:
   trunk:
     - AFNetworking
     - FMDB
     - Masonry
+    - YYText
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 84c36f1625c9e898e07697cc904b7688b2854eb8
+PODFILE CHECKSUM: 0c0dcc611f95133fa6b1f08e7af38273c848cdb1
 
 COCOAPODS: 1.11.3

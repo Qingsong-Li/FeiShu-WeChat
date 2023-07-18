@@ -11,17 +11,24 @@
 #import "FMDB.h"
 #import "ChatCell.h"
 #import "MyColors.h"
+#import "MeViewController.h"
+#import "RegisterViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ChatViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
-UIImagePickerControllerDelegate
+UIImagePickerControllerDelegate,
+UIPopoverPresentationControllerDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate
 >
 
 @property(strong,nonatomic) TopView *topView;
 @property(strong,nonatomic) UIButton *headBtn;
 @property(strong,nonatomic) UITableView *chatTableView;
 @property (strong, nonatomic) NSMutableArray<ChatModel *> *dataArray;
+@property(strong,nonatomic) MeViewController *meVC;
 
 
 @end
@@ -31,6 +38,7 @@ UIImagePickerControllerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.topView];
+    [self.topView addSubview:self.headBtn];
     self.view.backgroundColor = [UIColor colorWithRed:1 green:209/255.0 blue:204/255.0 alpha:1];
     // Do any additional setup after loading the view.
 }
@@ -38,48 +46,16 @@ UIImagePickerControllerDelegate
 - (void)viewDidAppear:(BOOL)animated{
     [self.view addSubview:self.chatTableView];
 }
-- (TopView *)topView{
-    if(_topView == nil){
-        _topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, 393, 120)];
-        _topView.title.text = @"微书";
-        [_topView addSubview:self.headBtn];
-    }
-    return _topView;
-}
 
--(UIButton *)headBtn{
-    if(_headBtn == nil){
-        _headBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 70, 50, 50)];
-        [_headBtn setBackgroundColor:[UIColor systemGray6Color]];
-        [_headBtn setImage:[UIImage imageNamed:@"无头像"] forState:UIControlStateNormal];
-    }
-    return _headBtn;
-}
-
--(UITableView *)chatTableView{
-    if(_chatTableView == nil){
-        _chatTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.topView.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.topView.bounds.size.height - self.tabBarController.tabBar.bounds.size.height ) style:UITableViewStylePlain];
-        _chatTableView.dataSource = self;
-        _chatTableView.delegate = self;
-    }
-    return _chatTableView;
-}
-
-- (NSMutableArray<ChatModel *> *)dataArray{
-    if (_dataArray == nil) {
-        // 从plist文件中加载
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"chatData.plist" ofType:nil];
-        NSArray *dataOriginArray = [NSArray arrayWithContentsOfFile:path];
-        NSMutableArray *ma = [NSMutableArray array];
-        // 数据转模型
-        for (NSDictionary *dic in dataOriginArray) {
-            ChatModel *model = [[ChatModel alloc] init];
-            [model ChatModelWithDic:dic];
-            [ma addObject:model];
-        }
-        _dataArray = ma;
-    }
-    return _dataArray;
+- (void)click {
+    self.meVC.preferredContentSize = CGSizeMake(150, 70);
+    self.meVC.modalPresentationStyle = UIModalPresentationPopover;
+    self.meVC.popoverPresentationController.sourceView = self.headBtn;
+    self.meVC.popoverPresentationController.sourceRect = self.headBtn.bounds;
+    self.meVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    self.meVC.popoverPresentationController.delegate = self;
+    [self presentViewController:self.meVC animated:YES completion:nil];
+    
 }
 
 #pragma mark UITableViewDataSource
@@ -112,17 +88,64 @@ UIImagePickerControllerDelegate
 
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 62;
+    return 65;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark -Lazy
+- (TopView *)topView{
+    if(_topView == nil){
+        _topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, 393, 120)];
+        _topView.title.text = @"微书";
+    }
+    return _topView;
 }
-*/
+
+-(UIButton *)headBtn{
+    if(_headBtn == nil){
+        _headBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 80, 40, 40)];
+        _headBtn.layer.cornerRadius = _headBtn.bounds.size.width/2;
+        [_headBtn setBackgroundColor:[UIColor systemGray6Color]];
+        [_headBtn setBackgroundImage:[UIImage imageNamed:@"头像"] forState:UIControlStateNormal];
+        [_headBtn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _headBtn;
+}
+
+-(UITableView *)chatTableView{
+    if(_chatTableView == nil){
+        _chatTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.topView.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.topView.bounds.size.height - self.tabBarController.tabBar.bounds.size.height ) style:UITableViewStylePlain];
+        _chatTableView.dataSource = self;
+        _chatTableView.delegate = self;
+    }
+    return _chatTableView;
+}
+
+- (MeViewController *)meVC{
+    if(_meVC == nil){
+        _meVC = [[MeViewController alloc] init];
+        [_meVC.logOutBtn addTarget:self action:@selector(logOut) forControlEvents:UIControlEventTouchUpInside];
+        [_meVC.changeHeadBtn addTarget:self action:@selector(changeBtn) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    return _meVC;
+}
+
+- (NSMutableArray<ChatModel *> *)dataArray{
+    if (_dataArray == nil) {
+        // 从plist文件中加载
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"chatData.plist" ofType:nil];
+        NSArray *dataOriginArray = [NSArray arrayWithContentsOfFile:path];
+        NSMutableArray *ma = [NSMutableArray array];
+        // 数据转模型
+        for (NSDictionary *dic in dataOriginArray) {
+            ChatModel *model = [[ChatModel alloc] init];
+            [model ChatModelWithDic:dic];
+            [ma addObject:model];
+        }
+        _dataArray = ma;
+    }
+    return _dataArray;
+}
 
 - (UIImage *)getImgWithName:(NSString *)name{
     // 定义图片的尺寸
@@ -150,6 +173,55 @@ UIImagePickerControllerDelegate
     UIGraphicsEndImageContext();
     return image;
 
+}
+
+- (void)logOut{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:@"loggingStatus"];
+    RegisterViewController *rvc = [[RegisterViewController alloc] init];
+    [self.navigationController pushViewController:rvc animated:YES];
+    
+}
+
+- (void)changeBtn {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+    imagePicker.allowsEditing = YES;
+    // 显示UIImagePickerController
+    [self dismissViewControllerAnimated:YES completion:^{
+            [self presentViewController:imagePicker animated:YES completion:nil];
+    }];
+   
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
+    // 从选取的媒体中获取图片
+    UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
+    
+    // 将选中的照片设置为头像按钮的图像
+    [self.headBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = self.headBtn.bounds;
+
+    // 创建圆形路径
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithOvalInRect:maskLayer.bounds];
+    maskLayer.path = maskPath.CGPath;
+
+    // 将遮罩层设置为头像按钮的图层的遮罩
+    self.headBtn.layer.mask = maskLayer;
+
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    // 关闭UIImagePickerController
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

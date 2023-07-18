@@ -8,6 +8,12 @@
 #import "TopView.h"
 #import "Masonry.h"
 
+@interface TopView ()
+
+
+
+@end
+
 @implementation TopView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -41,13 +47,34 @@
     }];
 }
 
+- (void)showTheBackBtn{
+    [self addSubview:self.backBtn];
+}
+
+- (void)hiddenTheBackBtn{
+    [self.backBtn removeFromSuperview];
+}
+
 - (UILabel *)title{
     if(_title == nil){
         _title = [[UILabel alloc]init];
-        _title.font = [UIFont systemFontOfSize:20];
+        _title.font = [UIFont boldSystemFontOfSize:20];
         _title.textAlignment = NSTextAlignmentCenter;
+        
     }
     return _title;
 }
+
+- (UIButton *)backBtn{
+    if(_backBtn == nil){
+        _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(25, 85, 18, 18)];
+        [_backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    }
+    return _backBtn;
+}
+
+
+
+
 
 @end

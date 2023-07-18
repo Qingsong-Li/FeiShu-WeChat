@@ -24,11 +24,6 @@
 }
 
 - (void) setMasonry{
-    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.topView).mas_offset(20);
-        make.centerY.mas_equalTo(self.topView.title).mas_offset(0);
-        make.size.mas_offset(15);
-    }];
     [self.searchField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view).mas_offset(0);
         make.centerY.mas_equalTo(self.view).mas_offset(-200);
@@ -43,20 +38,14 @@
     }];
 }
 
-- (UIButton *)backBtn{
-    if(_backBtn == nil){
-        _backBtn = [[UIButton alloc] init];
-        [_backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backToLastViewController) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
+
 
 - (TopView *)topView{
     if(_topView == nil){
-        _topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, 393, 100)];
+        _topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, 393, 115)];
         _topView.title.text = @"添加联系人";
-        [_topView addSubview:self.backBtn];
+        [_topView showTheBackBtn];
+        [_topView.backBtn addTarget:self action:@selector(backToLastViewController) forControlEvents:UIControlEventTouchUpInside];
     }
     return _topView;
 }

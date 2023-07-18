@@ -266,10 +266,22 @@ SearchCellDelegate
     }else{
         [self alertWithHint:@"该联系人不存在" comfirm:NO];
     }
-    
-    
-    
+}
 
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSString *key in self.localContacts){
+        NSArray *a = self.localContacts[key];
+        if(a.count>0){
+            [array addObject:key];
+        }
+    }
+    array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    return array;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    return index+1;
 }
 
 #pragma mark -Lazy
@@ -292,6 +304,7 @@ SearchCellDelegate
 
 - (UITableView *)table{
     if(_table == nil){
+        
         _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         //此处不设置为Group样式的原因是Group样式下的Header不会自动悬浮，导致每个section之间会有空隙，需要手动返回一个大小为零的FooterView，即使设置heightForFooter为0也不能解决
         _table.sectionHeaderTopPadding = 0;
