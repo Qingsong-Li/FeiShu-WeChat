@@ -67,7 +67,7 @@ SearchCellDelegate
 //将一个联系人添加到用于储存本地联系人的字典
 - (void)add{
     if([self.avc.searchField.text length] == 0){
-        [self alertWithHint:@"不能为空" comfirm:YES];
+        [self alertWithHint:@"不能为空" comfirm:YES back:NO];
     }else{
         ContactsModel *model = [StudentDataManager getStudentWithStunum:self.avc.searchField.text];
         if(model != nil && model.stunum != nil){
@@ -78,19 +78,19 @@ SearchCellDelegate
                 CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, NO); // 转换为拼音
                 NSString *firstCharacter = [[mutableString substringToIndex:1] uppercaseString]; // 获取拼音首字母并转为大写
                 [[self.localContacts mutableArrayValueForKey:firstCharacter] addObject:model];
-                [self alertWithHint:@"添加成功" comfirm:NO];
+                [self alertWithHint:@"添加成功" comfirm:NO back:YES];
             }else{
-                [self alertWithHint:@"该联系人已存在" comfirm:YES];
+                [self alertWithHint:@"该联系人已存在" comfirm:YES back:NO];
             }
         }else{
-            [self alertWithHint:@"未查询到该联系人" comfirm:YES];
+            [self alertWithHint:@"未查询到该联系人" comfirm:YES back:NO];
         }
     }
     [self.table reloadData];
 }
 
-//提示窗口，参数分别为提示信息和是否需要手动确认
-- (void)alertWithHint:(NSString *) hint comfirm:(BOOL) comfirm {
+//提示窗口，参数分别为提示信息和是否需要手动确认和是否需要返回
+- (void)alertWithHint:(NSString *) hint comfirm:(BOOL) comfirm back:(BOOL) back {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:hint preferredStyle:UIAlertControllerStyleAlert];
     if(comfirm){
         UIAlertAction *back = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -100,7 +100,11 @@ SearchCellDelegate
     [self presentViewController:alertController animated:YES completion:nil];
     if(!comfirm){
         [self dismissViewControllerAnimated:YES completion:^{
-            [self.navigationController popViewControllerAnimated:YES];
+            if(back){
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                
+            }
         }];
     }
 }
@@ -218,7 +222,7 @@ SearchCellDelegate
 - (void)searchContact{
     NSString *name = self.searchCell.searchField.text;
     if([name length] == 0){
-        [self alertWithHint:@"请输入联系人姓名后再点击" comfirm:YES];
+        [self alertWithHint:@"请输入联系人姓名后再点击" comfirm:YES back:NO];
         return;
     }
     //获取到需要显示的字母
@@ -264,7 +268,7 @@ SearchCellDelegate
             [[self.table cellForRowAtIndexPath:index] setBackgroundColor:[UIColor whiteColor]];
         });
     }else{
-        [self alertWithHint:@"该联系人不存在" comfirm:NO];
+        [self alertWithHint:@"该联系人不存在" comfirm:NO back:NO];
     }
 }
 
@@ -307,7 +311,11 @@ SearchCellDelegate
         
         _table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         //此处不设置为Group样式的原因是Group样式下的Header不会自动悬浮，导致每个section之间会有空隙，需要手动返回一个大小为零的FooterView，即使设置heightForFooter为0也不能解决
-        _table.sectionHeaderTopPadding = 0;
+        if (@available(iOS 15.0, *)) {
+            _table.sectionHeaderTopPadding = 0;
+        } else {
+            // Fallback on earlier versions
+        }
         _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         _table.delegate = self;
         _table.dataSource = self;
