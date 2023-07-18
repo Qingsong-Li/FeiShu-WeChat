@@ -11,8 +11,7 @@
 
 @interface PublishMomentViewController ()<
 YYTextViewDelegate,
-PHPickerViewControllerDelegate,
-NSCoding
+PHPickerViewControllerDelegate
 >
 
 
@@ -165,19 +164,6 @@ NSCoding
 
 }
 
-#pragma mark - NSCoding
-
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        self.publishPhotos = [coder decodeObjectForKey:@"publishPhotos"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.publishPhotos forKey:@"publishPhotos"];
-}
 
 #pragma mark - lazy
 - (PublishPageView *)publishView{

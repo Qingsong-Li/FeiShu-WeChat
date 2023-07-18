@@ -14,13 +14,13 @@
 #import "MeViewController.h"
 #import "RegisterViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <PhotosUI/PHPicker.h>
 
 @interface ChatViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
-UIImagePickerControllerDelegate,
 UIPopoverPresentationControllerDelegate,
-UIImagePickerControllerDelegate,
+PHPickerViewControllerDelegate,
 UINavigationControllerDelegate
 >
 
@@ -104,6 +104,7 @@ UINavigationControllerDelegate
     if(_headBtn == nil){
         _headBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 80, 40, 40)];
         _headBtn.layer.cornerRadius = _headBtn.bounds.size.width/2;
+        _headBtn.clipsToBounds = YES;
         [_headBtn setBackgroundColor:[UIColor systemGray6Color]];
         [_headBtn setBackgroundImage:[UIImage imageNamed:@"头像"] forState:UIControlStateNormal];
         [_headBtn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
@@ -184,14 +185,16 @@ UINavigationControllerDelegate
 }
 
 - (void)changeBtn {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagePicker.delegate = self;
-    imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    imagePicker.allowsEditing = YES;
+    PHPickerConfiguration *picker = [[PHPickerConfiguration alloc] init];
+    
+    picker.selectionLimit =  1;
+    picker.filter = [PHPickerFilter imagesFilter];
+    // 安装配置
+    PHPickerViewController *pVC = [[PHPickerViewController alloc] initWithConfiguration:picker];
+    pVC.delegate = self;
     // 显示UIImagePickerController
     [self dismissViewControllerAnimated:YES completion:^{
-            [self presentViewController:imagePicker animated:YES completion:nil];
+        [self presentViewController:pVC animated:YES completion:nil];
     }];
    
 }
@@ -201,27 +204,22 @@ UINavigationControllerDelegate
     
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
-    // 从选取的媒体中获取图片
-    UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
-    
-    // 将选中的照片设置为头像按钮的图像
-    [self.headBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = self.headBtn.bounds;
-
-    // 创建圆形路径
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithOvalInRect:maskLayer.bounds];
-    maskLayer.path = maskPath.CGPath;
-
-    // 将遮罩层设置为头像按钮的图层的遮罩
-    self.headBtn.layer.mask = maskLayer;
-
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    // 关闭UIImagePickerController
+#pragma mark - PHPickerViewControllerDelegate
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
     [picker dismissViewControllerAnimated:YES completion:nil];
+    for (PHPickerResult *result in results) {
+        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id <NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
+            if ([object isKindOfClass:[UIImage class]]) {
+                // 更新
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (object) {
+                        [self.headBtn setBackgroundImage:object forState:UIControlStateNormal];
+                    }
+                });
+            }
+        }];
+    }
+
 }
 
 @end

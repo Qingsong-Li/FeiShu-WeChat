@@ -37,7 +37,6 @@
     CGSize imageSize = CGSizeMake(self.headImg.bounds.size.width, self.headImg.bounds.size.height);
     // 创建图形上下文
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-
     // 随机生成背景颜色
     UIColor *backgroundColor = [MyColors getRandomColor];
     [backgroundColor setFill];

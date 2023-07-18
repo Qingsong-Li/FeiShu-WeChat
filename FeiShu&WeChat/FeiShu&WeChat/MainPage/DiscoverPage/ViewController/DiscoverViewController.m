@@ -164,6 +164,7 @@ UINavigationControllerDelegate
 
 
 - (void)clikeToComment:(UIButton *)sender{
+    self.table.scrollEnabled = NO;
     [self.moreView removeFromSuperview];
     //这个手势用于点击除输入框以外的地方时可以收起输入框和键盘
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
@@ -173,7 +174,7 @@ UINavigationControllerDelegate
     [self.view.window addSubview:self.inputTextField];
     [self.view.window addSubview:self.confirmBtn];
     [self.inputTextField becomeFirstResponder];//弹出键盘
-    self.table.scrollEnabled = NO;
+    
 }
 
 - (void)keyboardWillShow:(NSNotification *) notification{

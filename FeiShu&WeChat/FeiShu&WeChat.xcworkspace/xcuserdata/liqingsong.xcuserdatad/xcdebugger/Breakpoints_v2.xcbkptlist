@@ -110,8 +110,8 @@
             filePath = "FeiShu&amp;WeChat/MainPage/DiscoverPage/ViewController/PublishMomentViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-saveThePublishedMoment"
             landmarkType = "7">
             <Locations>
@@ -158,8 +158,8 @@
             filePath = "FeiShu&amp;WeChat/MainPage/DiscoverPage/ViewController/DiscoverViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "-dataArray"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "FeiShu&amp;WeChat/MainPage/DiscoverPage/ViewController/DiscoverViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-clickToLike:"
             landmarkType = "7">
          </BreakpointContent>
