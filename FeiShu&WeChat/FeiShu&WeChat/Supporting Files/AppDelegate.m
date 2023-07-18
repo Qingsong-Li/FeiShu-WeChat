@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "MyTabBarController.h"
 #import <Security/Security.h>
+#import "KeyChainManager.h"
 
 
 @interface AppDelegate ()
@@ -22,9 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 //此段代码仅需运行一次将密码保存在项目中即可;
-//    [KeyChainManager savePassword:@"123456" AndAccount:@"redrock"];
-//    NSString *rightPassword = [KeyChainManager getPasswordWithAccount:@"redrock"];
-//    NSLog(@"%@",rightPassword);
+    [KeyChainManager savePassword:@"123456" AndAccount:@"redrock"];
+    NSString *rightPassword = [KeyChainManager getPasswordWithAccount:@"redrock"];
+    NSLog(@"%@",rightPassword);
     
     NSString *s = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     NSLog(@"%@",s);

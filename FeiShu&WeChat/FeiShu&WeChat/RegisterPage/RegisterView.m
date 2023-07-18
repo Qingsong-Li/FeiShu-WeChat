@@ -6,6 +6,12 @@
 //
 
 #import "RegisterView.h"
+
+@interface RegisterView () <
+UITextFieldDelegate>
+
+@end
+
 @implementation RegisterView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -80,6 +86,7 @@
 - (UITextField *)passWordField{
     if(_passWordField == nil){
         _passWordField = [self getField];
+        _passWordField.delegate = self;
         _passWordField.placeholder = @"请输入密码";
         _passWordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 
@@ -111,6 +118,12 @@
         [_logBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     }
     return _logBtn;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 
